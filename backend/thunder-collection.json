@@ -1,0 +1,276 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "NewsCurate API",
+    "dateExported": "2025-12-11",
+    "version": "1.1",
+    "folders": [
+        {
+            "id": "auth-folder",
+            "name": "Authentication",
+            "containsRequests": true
+        },
+        {
+            "id": "user-folder",
+            "name": "User Features",
+            "containsRequests": true
+        },
+        {
+            "id": "articles-folder",
+            "name": "Articles",
+            "containsRequests": true
+        },
+        {
+            "id": "admin-folder",
+            "name": "Admin (Requires Admin Role)",
+            "containsRequests": true
+        }
+    ],
+    "requests": [
+        {
+            "id": "1",
+            "name": "Health Check",
+            "url": "http://localhost:5000/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "id": "2",
+            "folderId": "auth-folder",
+            "name": "Register User",
+            "url": "http://localhost:5000/api/auth/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "id": "3",
+            "folderId": "auth-folder",
+            "name": "Login",
+            "url": "http://localhost:5000/api/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "id": "4",
+            "folderId": "auth-folder",
+            "name": "Get Current User",
+            "url": "http://localhost:5000/api/auth/me",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ],
+            "tests": []
+        },
+        {
+            "id": "5",
+            "folderId": "user-folder",
+            "name": "Get Preferences",
+            "url": "http://localhost:5000/api/user/preferences",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ],
+            "tests": []
+        },
+        {
+            "id": "6",
+            "folderId": "user-folder",
+            "name": "Update Preferences",
+            "url": "http://localhost:5000/api/user/preferences",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"topics\": [\"tech\", \"sports\", \"politics\"]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "id": "7",
+            "folderId": "articles-folder",
+            "name": "Get All Articles",
+            "url": "http://localhost:5000/api/articles",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [],
+            "tests": []
+        },
+        {
+            "id": "8",
+            "folderId": "articles-folder",
+            "name": "Get Articles by Topic",
+            "url": "http://localhost:5000/api/articles?topic=tech",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [],
+            "tests": []
+        },
+        {
+            "id": "9",
+            "folderId": "articles-folder",
+            "name": "Get Single Article",
+            "url": "http://localhost:5000/api/articles/ARTICLE_ID_HERE",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [],
+            "tests": []
+        },
+        {
+            "id": "10",
+            "folderId": "articles-folder",
+            "name": "Save Article",
+            "url": "http://localhost:5000/api/articles/save/ARTICLE_ID_HERE",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ],
+            "tests": []
+        },
+        {
+            "id": "11",
+            "folderId": "articles-folder",
+            "name": "Get Saved Articles",
+            "url": "http://localhost:5000/api/articles/saved/list",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ],
+            "tests": []
+        },
+        {
+            "id": "12",
+            "folderId": "admin-folder",
+            "name": "Create Article (Admin)",
+            "url": "http://localhost:5000/api/admin/article",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer ADMIN_TOKEN_HERE"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Breaking Tech News\",\n  \"content\": \"This is the full article content with detailed information about the latest technology trends and innovations...\",\n  \"summary\": \"A brief overview of the latest tech innovations\",\n  \"topic\": \"tech\",\n  \"source\": \"TechCrunch\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "id": "13",
+            "folderId": "admin-folder",
+            "name": "Get Topic Stats (Admin)",
+            "url": "http://localhost:5000/api/admin/topics/stats",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer ADMIN_TOKEN_HERE"
+                }
+            ],
+            "tests": []
+        },
+        {
+            "id": "14",
+            "folderId": "admin-folder",
+            "name": "Get All Users (Admin)",
+            "url": "http://localhost:5000/api/admin/users",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2025-12-11",
+            "modified": "2025-12-11",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer ADMIN_TOKEN_HERE"
+                }
+            ],
+            "tests": []
+        }
+    ]
+}

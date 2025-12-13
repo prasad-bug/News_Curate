@@ -1,0 +1,233 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "NewsCurate API (Live News)",
+    "dateExported": "2025-12-11",
+    "version": "1.2",
+    "folders": [
+        {
+            "id": "auth-folder",
+            "name": "Authentication",
+            "containsRequests": true
+        },
+        {
+            "id": "user-folder",
+            "name": "User Features",
+            "containsRequests": true
+        },
+        {
+            "id": "articles-folder",
+            "name": "Articles (Live News)",
+            "containsRequests": true
+        },
+        {
+            "id": "admin-folder",
+            "name": "Admin",
+            "containsRequests": true
+        }
+    ],
+    "requests": [
+        {
+            "id": "1",
+            "name": "Health Check",
+            "url": "http://localhost:5001/",
+            "method": "GET",
+            "sortNum": 10000
+        },
+        {
+            "id": "2",
+            "folderId": "auth-folder",
+            "name": "Register User",
+            "url": "http://localhost:5001/api/auth/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+        },
+        {
+            "id": "3",
+            "folderId": "auth-folder",
+            "name": "Login",
+            "url": "http://localhost:5001/api/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+        },
+        {
+            "id": "4",
+            "folderId": "auth-folder",
+            "name": "Get Current User",
+            "url": "http://localhost:5001/api/auth/me",
+            "method": "GET",
+            "sortNum": 40000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "folderId": "user-folder",
+            "name": "Get Preferences",
+            "url": "http://localhost:5001/api/user/preferences",
+            "method": "GET",
+            "sortNum": 50000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ]
+        },
+        {
+            "id": "6",
+            "folderId": "user-folder",
+            "name": "Update Preferences",
+            "url": "http://localhost:5001/api/user/preferences",
+            "method": "PUT",
+            "sortNum": 60000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"topics\": [\"technology\", \"sports\", \"business\"]\n}"
+            }
+        },
+        {
+            "id": "7",
+            "folderId": "articles-folder",
+            "name": "Get Live News - Technology",
+            "url": "http://localhost:5001/api/articles?topic=technology",
+            "method": "GET",
+            "sortNum": 70000
+        },
+        {
+            "id": "8",
+            "folderId": "articles-folder",
+            "name": "Get Live News - Sports",
+            "url": "http://localhost:5001/api/articles?topic=sports",
+            "method": "GET",
+            "sortNum": 80000
+        },
+        {
+            "id": "9",
+            "folderId": "articles-folder",
+            "name": "Get Live News - General",
+            "url": "http://localhost:5001/api/articles",
+            "method": "GET",
+            "sortNum": 90000
+        },
+        {
+            "id": "10",
+            "folderId": "articles-folder",
+            "name": "Save Live Article",
+            "url": "http://localhost:5001/api/articles/save",
+            "method": "POST",
+            "sortNum": 100000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Sample Article Title\",\n  \"description\": \"This is the article description or summary\",\n  \"url\": \"https://example.com/article\",\n  \"imageUrl\": \"https://example.com/image.jpg\",\n  \"source\": \"BBC News\",\n  \"publishedAt\": \"2025-12-11T12:00:00Z\",\n  \"topic\": \"technology\"\n}"
+            }
+        },
+        {
+            "id": "11",
+            "folderId": "articles-folder",
+            "name": "Get Saved Articles",
+            "url": "http://localhost:5001/api/articles/saved/list",
+            "method": "GET",
+            "sortNum": 110000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer YOUR_TOKEN_HERE"
+                }
+            ]
+        },
+        {
+            "id": "12",
+            "folderId": "admin-folder",
+            "name": "Create Custom Article (Admin)",
+            "url": "http://localhost:5001/api/admin/article",
+            "method": "POST",
+            "sortNum": 120000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer ADMIN_TOKEN_HERE"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Custom Admin Article\",\n  \"content\": \"This is a custom article created by admin. It will be stored in the database.\",\n  \"summary\": \"Custom article summary\",\n  \"topic\": \"technology\",\n  \"source\": \"Internal\"\n}"
+            }
+        },
+        {
+            "id": "13",
+            "folderId": "admin-folder",
+            "name": "Get Topic Stats (Admin)",
+            "url": "http://localhost:5001/api/admin/topics/stats",
+            "method": "GET",
+            "sortNum": 130000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer ADMIN_TOKEN_HERE"
+                }
+            ]
+        },
+        {
+            "id": "14",
+            "folderId": "admin-folder",
+            "name": "Get All Users (Admin)",
+            "url": "http://localhost:5001/api/admin/users",
+            "method": "GET",
+            "sortNum": 140000,
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer ADMIN_TOKEN_HERE"
+                }
+            ]
+        }
+    ]
+}
