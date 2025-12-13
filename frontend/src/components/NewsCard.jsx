@@ -95,7 +95,7 @@ export default function NewsCard({ article }) {
 
                     <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                         <span className="text-xs text-gray-500 dark:text-gray-400">
-                            {article.source}
+                            {article.source?.name || (typeof article.source === 'string' ? article.source : 'News')}
                         </span>
 
                         <div className="flex space-x-2">
