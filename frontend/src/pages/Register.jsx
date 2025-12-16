@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { UserPlus, Mail, Lock, User } from 'lucide-react';
 
 export default function Register() {
     const [fullName, setFullName] = useState('');
@@ -25,118 +26,65 @@ export default function Register() {
     };
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#f3f4f6',
-            padding: '20px'
-        }}>
-            <div style={{
-                maxWidth: '400px',
-                width: '100%',
-                backgroundColor: 'white',
-                padding: '40px',
-                borderRadius: '12px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
-            }}>
-                <h2 style={{
-                    fontSize: '28px',
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    marginBottom: '8px',
-                    color: '#1f2937'
-                }}>
-                    Create Account
-                </h2>
-                <p style={{
-                    textAlign: 'center',
-                    color: '#6b7280',
-                    marginBottom: '32px'
-                }}>
-                    Join NewsCurate for personalized news
-                </p>
+        <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12">
+            <div className="max-w-md w-full">
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                        Create Account
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-400 mt-2">
+                        Join NewsCurate for personalized news
+                    </p>
+                </div>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="card p-8 space-y-6">
                     {/* Full Name Field */}
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{
-                            display: 'block',
-                            marginBottom: '8px',
-                            fontWeight: '500',
-                            color: '#374151'
-                        }}>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Full Name
                         </label>
-                        <input
-                            type="text"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
-                            placeholder="John Doe"
-                            required
-                            style={{
-                                width: '100%',
-                                padding: '12px 16px',
-                                border: '1px solid #d1d5db',
-                                borderRadius: '8px',
-                                fontSize: '16px',
-                                boxSizing: 'border-box'
-                            }}
-                        />
+                        <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <input
+                                type="text"
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                                className="input pl-10"
+                                placeholder="John Doe"
+                                required
+                            />
+                        </div>
                     </div>
 
                     {/* Email Field */}
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{
-                            display: 'block',
-                            marginBottom: '8px',
-                            fontWeight: '500',
-                            color: '#374151'
-                        }}>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Email
                         </label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="your@email.com"
-                            required
-                            style={{
-                                width: '100%',
-                                padding: '12px 16px',
-                                border: '1px solid #d1d5db',
-                                borderRadius: '8px',
-                                fontSize: '16px',
-                                boxSizing: 'border-box'
-                            }}
-                        />
+                        <div className="relative">
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="input pl-10"
+                                placeholder="your@email.com"
+                                required
+                            />
+                        </div>
                     </div>
 
-                    {/* ROLE DROPDOWN - VISIBLE BETWEEN EMAIL AND PASSWORD */}
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{
-                            display: 'block',
-                            marginBottom: '8px',
-                            fontWeight: '500',
-                            color: '#374151'
-                        }}>
+                    {/* Role Selection */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Select Role
                         </label>
                         <select
                             name="role"
                             value={role}
                             onChange={(e) => setRole(e.target.value)}
-                            style={{
-                                width: '100%',
-                                padding: '12px 16px',
-                                border: '1px solid #d1d5db',
-                                borderRadius: '8px',
-                                fontSize: '16px',
-                                backgroundColor: 'white',
-                                cursor: 'pointer',
-                                boxSizing: 'border-box'
-                            }}
+                            className="input"
+                            style={{ cursor: 'pointer' }}
                         >
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
@@ -144,36 +92,23 @@ export default function Register() {
                     </div>
 
                     {/* Password Field */}
-                    <div style={{ marginBottom: '24px' }}>
-                        <label style={{
-                            display: 'block',
-                            marginBottom: '8px',
-                            fontWeight: '500',
-                            color: '#374151'
-                        }}>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Password
                         </label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="••••••••"
-                            required
-                            minLength={6}
-                            style={{
-                                width: '100%',
-                                padding: '12px 16px',
-                                border: '1px solid #d1d5db',
-                                borderRadius: '8px',
-                                fontSize: '16px',
-                                boxSizing: 'border-box'
-                            }}
-                        />
-                        <p style={{
-                            fontSize: '12px',
-                            color: '#9ca3af',
-                            marginTop: '4px'
-                        }}>
+                        <div className="relative">
+                            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="input pl-10"
+                                placeholder="••••••••"
+                                required
+                                minLength={6}
+                            />
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">
                             At least 6 characters
                         </p>
                     </div>
@@ -182,30 +117,21 @@ export default function Register() {
                     <button
                         type="submit"
                         disabled={loading}
-                        style={{
-                            width: '100%',
-                            padding: '14px',
-                            backgroundColor: '#dc2626',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '8px',
-                            fontSize: '16px',
-                            fontWeight: '600',
-                            cursor: loading ? 'not-allowed' : 'pointer',
-                            opacity: loading ? 0.7 : 1
-                        }}
+                        className="w-full btn btn-primary flex items-center justify-center"
                     >
-                        {loading ? 'Creating account...' : 'Register'}
+                        {loading ? (
+                            'Creating account...'
+                        ) : (
+                            <>
+                                <UserPlus className="w-5 h-5 mr-2" />
+                                Register
+                            </>
+                        )}
                     </button>
 
-                    <p style={{
-                        textAlign: 'center',
-                        marginTop: '20px',
-                        color: '#6b7280',
-                        fontSize: '14px'
-                    }}>
+                    <p className="text-center text-sm text-gray-600 dark:text-gray-400">
                         Already have an account?{' '}
-                        <Link to="/login" style={{ color: '#dc2626', fontWeight: '500' }}>
+                        <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
                             Login here
                         </Link>
                     </p>
